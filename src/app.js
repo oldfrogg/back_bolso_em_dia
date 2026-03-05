@@ -24,7 +24,6 @@
 
 import "dotenv/config";
 import express from "express";
-import UsuarioRepository from "./repositories/usuario.repository.js";
 import session from "express-session";
 import {authRoutes, UsuarioRoutes, CategoriaRoutes, PeriodoRoutes, TransacaoRoutes} from "./routes/index.js"
 
@@ -51,5 +50,6 @@ app.listen(PORT, () => {
 });
 
 export default app;
+
 
 

@@ -28,8 +28,6 @@ import UsuarioRepository from "./repositories/usuario.repository.js";
 import session from "express-session";
 import {authRoutes, UsuarioRoutes, CategoriaRoutes, PeriodoRoutes, TransacaoRoutes} from "./routes/index.js"
 
-
-
 const PORT = process.env.port || 3000;
 
 const app = express();
@@ -48,22 +46,9 @@ app.use("/categorias", CategoriaRoutes);
 app.use("/periodos", PeriodoRoutes);
 app.use("/transacoes", TransacaoRoutes);
 
-
-app.get("/", (req, res) => {
-    res.status(200).send("Hello, World!");
-});
-
-app.get("/teste", async (req, res) => {
-    try {
-        const usuarios = await UsuarioRepository.getUsuarios();
-    res.status(200).json(usuarios)
-    } catch(error) {
-        res.status(500).json({error: "Erro ao listar usuários"})
-    }
-})
-
 app.listen(PORT, () => {
     console.log(`Servidor escutando na porta ${PORT}...`);
 });
 
 export default app;
+

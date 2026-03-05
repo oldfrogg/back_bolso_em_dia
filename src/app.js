@@ -32,7 +32,10 @@ const PORT = process.env.port || 3000
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+  origin: "http://localhost:3001", // qual front pode acessar
+  credentials: true // permite envio de cookies
+}))
 
 app.use(express.json())
 // utilizo o express.json() em todas as requisições manejadas pelo express
@@ -55,3 +58,4 @@ app.listen(PORT, () => {
 });
 
 export default app
+

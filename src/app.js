@@ -35,7 +35,7 @@ app.use(express.json());
 // utilizo o express.json() em todas as requisições manejadas pelo express
 
 app.use(session({
-  secret: "segredo-super-simples",
+  secret: "segredinho",
   resave: false,
   saveUninitialized: false
 }));
@@ -51,4 +51,5 @@ app.listen(PORT, () => {
 });
 
 export default app;
+
 

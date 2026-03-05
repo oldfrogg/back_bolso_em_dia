@@ -22,16 +22,21 @@
 // GET /configs (dia_base e contar_agendamentos)
 // PUT /configs
 
-import "dotenv/config";
-import express from "express";
-import session from "express-session";
+import "dotenv/config"
+import cors from "cors" // permitir comunicação com o front
+import express from "express"
+import session from "express-session"
 import {authRoutes, UsuarioRoutes, CategoriaRoutes, PeriodoRoutes, TransacaoRoutes} from "./routes/index.js"
 
-const PORT = process.env.port || 3000;
+const PORT = process.env.port || 3000
 
-const app = express();
-app.use(express.json());
+const app = express()
+
+app.use(cors())
+
+app.use(express.json())
 // utilizo o express.json() em todas as requisições manejadas pelo express
+
 
 app.use(session({
   secret: "segredinho",
@@ -39,17 +44,14 @@ app.use(session({
   saveUninitialized: false
 }));
 
-app.use("/auth", authRoutes);
-app.use("/usuarios", UsuarioRoutes);
-app.use("/categorias", CategoriaRoutes);
-app.use("/periodos", PeriodoRoutes);
-app.use("/transacoes", TransacaoRoutes);
+app.use("/auth", authRoutes)
+app.use("/usuarios", UsuarioRoutes)
+app.use("/categorias", CategoriaRoutes)
+app.use("/periodos", PeriodoRoutes)
+app.use("/transacoes", TransacaoRoutes)
 
 app.listen(PORT, () => {
-    console.log(`Servidor escutando na porta ${PORT}...`);
+    console.log(`Servidor escutando na porta ${PORT}...`)
 });
 
-export default app;
-
-
-
+export default app
